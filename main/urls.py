@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from main.views import index
-from main.views import prices
+from main.views import price_list
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
-    path('prices/',prices),
+    path('prices/',price_list),
 ]
