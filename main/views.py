@@ -5,8 +5,15 @@ def index(request):
     product_num = request.GET.get('product', 1)
     urls = gen_fuel([product_num], regions, day)
     fuel_data = get_fuel_data(urls)
-    return HttpResponse(fuel_data)
+    fuel_data_rows = ''
+    for value in fuel_data:
+        fuel_data_rows = fuel_data_rows + """
+            <tr>
+                <td>{price} </td><td>{address} </td><td>{location} </td><td>{name}</td><td>{latitude} </td><td>{longitude} </td>
+            </tr>
+        """.format(**value)
 
+    return HttpResponse("<table>" + fuel_data_rows + "</table>")
 
 def price_list(request):
     fuel_data_rows_string = ''
@@ -59,12 +66,16 @@ def get_fuel_data(listed_fuel_watch_urls):
             address = info.find('address').text
             location = info.find('location').text
             name = info.find('trading-name').text
+            lat = info.find('latitude').text
+            long = info.find('longitude').text
 
             data_dict =  {
                 'price': price,
                 'address': address,
                 'location': location,
                 'name': name,
+                'latitude': lat,
+                'longitude': long,
             }
             list_of_dicts.append(data_dict)
 
