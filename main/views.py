@@ -9,7 +9,7 @@ def index(request):
     for value in fuel_data:
         fuel_data_rows = fuel_data_rows + """
             <tr>
-                <td>{price} </td><td>{address} </td><td>{location} </td><td>{name}</td><td>{latitude} </td><td>{longitude} </td>
+                <td>{price} </td><td>{address} </td><td>{location} </td><td>{brand}</td><td>{latitude} </td><td>{longitude} </td>
             </tr>
         """.format(**value)
 
@@ -20,7 +20,7 @@ def price_list(request):
     for value in fuel_data:
         fuel_data_rows_string = fuel_data_rows_string + """
             <tr>
-                <td>{price} </td><td>{address} </td><td>{location} </td><td>{name}</td>
+                <td>{price} </td><td>{address} </td><td>{location} </td><td>{brand}</td>
             </tr>
         """.format(**value)
     return HttpResponse("<table>" + fuel_data_rows_string + "</table>")
@@ -65,7 +65,7 @@ def get_fuel_data(listed_fuel_watch_urls):
             price = info.find('price').text
             address = info.find('address').text
             location = info.find('location').text
-            name = info.find('trading-name').text
+            brand = info.find('brand').text
             lat = info.find('latitude').text
             long = info.find('longitude').text
 
@@ -73,7 +73,7 @@ def get_fuel_data(listed_fuel_watch_urls):
                 'price': price,
                 'address': address,
                 'location': location,
-                'name': name,
+                'brand': brand,
                 'latitude': lat,
                 'longitude': long,
             }
@@ -106,7 +106,7 @@ fuel_data_rows_string = ""
 for value in fuel_data:
     fuel_data_rows_string += """
         <tr>
-            <td>{price} </td><td>{address} </td><td>{location} </td><td>{name}</td>
+            <td>{price} </td><td>{address} </td><td>{location} </td><td>{brand}</td>
         </tr>
     """.format(**value)
 
