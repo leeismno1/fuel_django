@@ -114,11 +114,11 @@ for value in fuel_data:
 fuel_data_html = "<html><title>Fuel Report</title><body><tbody><table>" + fuel_data_rows_string + "</table></tbody></body></html>"
 
 # Opens and creates a file named fuel_report.html with write access.
-fuel_file = open('fuel_report.html', 'w')
+# fuel_file = open('fuel_report.html', 'w')
 
 # Writes the the data from fuel_data_html into the fuel_report.html file.
-fuel_file.write(fuel_data_html)
+# fuel_file.write(fuel_data_html)
 
 # Closes fuel_report.html.
-fuel_file.close()
+# fuel_file.close()
 
