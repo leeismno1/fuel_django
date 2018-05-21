@@ -1,4 +1,8 @@
 from django.http import HttpResponse
+import requests
+from lxml import etree as ET
+import collections, itertools
+from pprint import pprint
 
 
 def index(request):
@@ -34,10 +38,7 @@ def price_list(request):
 
 # fuel data created from the below into a html file
 
-import requests
-from lxml import etree as ET
-import collections, itertools
-from pprint import pprint
+
 
 # Returns a list of URLs based on the variables for fueld_types, regions and day.
 def gen_fuel(fuel_types, regions, day):
