@@ -2,6 +2,7 @@ from django.http import HttpResponse
 import requests
 from lxml import etree as ET
 import collections, itertools
+from django.shortcuts import render
 from pprint import pprint
 
 
@@ -38,7 +39,8 @@ def price_list(request):
 
 # fuel data created from the below into a html file
 
-
+def fuel_page(request):
+    return render(request, 'fuel_page.html', )
 
 # Returns a list of URLs based on the variables for fueld_types, regions and day.
 def gen_fuel(fuel_types, regions, day):

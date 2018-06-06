@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script src="http://unpkg.com/mithril/mithril.js"></script>
+    </head>
+    <body>
+            <script>
+
+            var showUnleaded = true
+            var premium = [{'price': 123, 'brand': 'BP', 'location': 'Bentley'}];
+            var unleaded = [{'price': 666, 'brand': 'Caltex', 'location': 'Morley'}];
+            // var brands = unleaded.
+            var transformToRows = function(each){
+                return m('tr', m('td', each['brand']), m('td', each['price'])) // , ' ', each['location'], ' ', each['brand'], ' ', each['address']);
+            };
+            var unleadedTableRows = unleaded.map(transformToRows)
+            var premiumTableRows = premium.map(transformToRows)
+            var App = {
+                  view: function() {
+                      return m('div',
+                          m('h1',
+                              'Fuel Pricesdf'
+                          ),
+                          m('button',
+                            {
+                                onclick: function(){
+                                   showUnleaded = ! showUnleaded;
+                                },
+                            },
+                            'switch unleaded / premium'),
+                          m('table',
+                            showUnleaded ? unleadedTableRows : premiumTableRows
+
+
+                          ),
+                      );
+                  },
+              }
+                m.mount(document.body, App);
+            </script>
+
+        </body>
+</html>

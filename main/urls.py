@@ -18,10 +18,12 @@ from django.urls import path
 
 from main.views import index
 from main.views import price_list
+from main.views import fuel_page
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index),
     path('prices/',price_list),
+    path('fuel/',fuel_page),
 ]
